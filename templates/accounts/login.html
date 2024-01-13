@@ -1,0 +1,45 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+{% block blockname %}Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+{% endblock %}   
+
+
+{% block content %}
+<div class="left">
+    <div class="card">
+        <div class="card-body">
+            <h1>login</h1>
+            <p class="fs-5">access your account</p>
+            <form method="post">
+                {% csrf_token %}
+                
+                    <div class="mb-3">
+                        <label for="username" class="form-label">username</label>
+                        <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            name="username"
+                            id="username"
+                            aria-describedby="usernamehelpId"
+                            placeholder="john@cena.com"
+                        />
+                        <small id="usernamehelpId" class="form-text text-muted">enter your registered credential</small>
+                    </div>
+                    <div class="mb-3">
+                        
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="right">
+    <img src="{% static 'images/cake.webp' %}" alt="">
+</div>    
+{% endblock %}
+    
