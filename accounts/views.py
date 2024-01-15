@@ -47,4 +47,4 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request,"logout successful")
-    return redirect ('login')
+    return redirect ('home')
