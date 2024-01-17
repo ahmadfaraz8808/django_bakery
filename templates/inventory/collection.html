@@ -1,0 +1,81 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+{% block title %}
+{{collection}}
+{% endblock title %}
+
+
+
+{% block css %}
+<style>
+    .collection-image {
+        height: 350px;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+
+{% endblock css %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{collection.image.url}}" alt="{{collection.name}}" class="w-100 collection-image ">
+            <h1>{{collection.name}}</h1>
+            <p class="lead">
+                {{collection.desc}}
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-2">Collections
+            <!--some borders are removed-->
+            <ul class="list-group list-groups-flush">
+
+                {% for col in collections %}
+                <li class="list-group-item">
+                    <a class="nav-link" href="{% url 'collection_detail' col.id %}">
+                        &rightarrow;{{col.name}}
+                    </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="container-fluid">
+                <div class="row">
+
+                    {% for prd in products %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{prd.image.url}}" alt="{{prd.name}}" class="card-img-top">
+                            <div class="card-body">
+
+                                <h2>{{prd.name}}</h2>
+                                <div class="d-flex justify-content-between align-item-center">
+                                    <p class="fw-bold my-2">Rs.{{prd.price}}</p>
+                                    <a href="#" class="btn btn-outline-success">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-warning" role="alert">
+                        <strong>No products available</strong>check later!
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

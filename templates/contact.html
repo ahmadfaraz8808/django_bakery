@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block title %}Contact us{% endblock %}           
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col md-4">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                    type="email"
+                    class="form-control form-control-sm"
+                    name="email"
+                    id="email"
+                    aria-describedby="emailhelpId"
+                    placeholder="Contact Email"
+                />
+                <small id="emailhelpId" class="form-text text-muted">we will not spam you</small>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Full Name</label>
+                <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="name"
+                    id="name"
+                    aria-describedby="namehelpId"
+                    placeholder="your name"
+                />
+                <small id="namehelpId" class="form-text text-muted">dont use special characters</small>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">message</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="message"
+                    id="message"
+                    aria-describedby="messagehelpId"
+                    placeholder="message"
+                />
+                <small id="helpId" class="form-text text-muted">Help text</small>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %} 
