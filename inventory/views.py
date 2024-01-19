@@ -11,7 +11,7 @@ def collection(request,id):
     })
 def collection_list(request):
     return render(request,'inventory/collection_all.html', context={
-        'collections':Collection.objects.filter(collection=c)
+        'collections':Collection.objects.all()
     })
 def product_list(request):
     return render(request,'inventory/product_all.html', context={

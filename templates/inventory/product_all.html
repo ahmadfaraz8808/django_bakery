@@ -2,11 +2,85 @@
 
 {% load static %}
 {% block title %}
-    product_all
+product_all
 {% endblock title %}
-    
+
+
+
+{% block css %}
+
+{% endblock css %}
+
+
 
 {% block content %}
-    
+<div class="container-fluid px-0 mx-0">
+    <div class="row mx-0">
+        <div class="col text-center px-0 ">
+            <h1 class="display-4 fw-bold">All Products</h1>
+
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-2">Collections
+            <!--some borders are removed-->
+            <ul class="list-group list-groups-flush">
+
+                {% for col in collections %}
+                <li class="list-group-item">
+                    <a class="nav-link" href="{% url 'collection_detail' col.id %}">
+                        &rightarrow;{{col.name}}
+                    </a>
+                </li>
+                {% endfor %}
+                <li class="list-group-item">
+                    <a href="{% url 'product_all' %}" class="nav-link">
+                        &rightarrow;All Products
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="container-fluid">
+                <div class="row">
+
+                    {% for prd in products %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="{% url 'product_detail' prd.id %}" class="text-decoration-none">
+                                <img src="{{prd.image.url}}" alt="{{prd.name}}" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+
+                                <h2 title="{{prd.name}}">
+                                    <a href="{% url 'product_detail' prd.id %}" class="text-decoration-none text-dark">
+                                        {{prd.name|truncatechars:15}}
+                                    </a>
+                                </h2>
+                                <div class="d-flex justify-content-between align-item-center">
+                                    <p class="fw-bold my-1">Rs.{{prd.price}}</p>
+                                    <div class="">
+                                        <a href="{% url 'product_detail' prd.id %}"
+                                            class="btn btn-outline-primary btn-sm">View</a>
+                                        <a href="#" class="btn btn-outline-success btn-sm">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-warning" role="alert">
+                        <strong>No products available</strong>check later!
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}
-    
